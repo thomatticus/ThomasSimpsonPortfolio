@@ -1642,14 +1642,25 @@ form?.addEventListener(
 
     try {
 
-      /*
-        FORM SERVICE GOES HERE.
-      */
+          const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json"
+        }
+      });
 
-      throw new Error(
-        "Contact form service is not connected yet."
-      );
+      if (!response.ok) {
+        throw new Error(
+          `Message delivery failed: ${response.status}`
+        );
+      }
 
+      if (status) {
+        status.textContent = "";
+      }
+
+      showContactSuccess();
 
     } catch (error) {
 
@@ -1660,7 +1671,7 @@ form?.addEventListener(
 
       if (status) {
         status.textContent =
-          "Sending isn't available yet.";
+          "Something went wrong. Please try again.";
       }
 
       if (submitButton) {

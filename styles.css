@@ -4397,6 +4397,7 @@ html[data-theme="dusk"]
   --surface-about: #e8ede5;
   --surface-project: #F2EBE6;
   --surface-music: #E8EDF0;
+  --surface-nostalgia: #E5E9DF;
   --surface-languages: #f8f2e8;
 
   --theme-text: #294b3b;
@@ -4428,6 +4429,7 @@ html[data-theme="dusk"] {
   --surface-about: #202d28;
   --surface-project: #1b2823;
   --surface-music: #202D35;
+  --surface-nostalgia: #252D27;
   --surface-languages: #18241f;
 
   --theme-text: #e6e2d7;
@@ -4775,6 +4777,72 @@ html[data-theme="dusk"]
   background: var(--surface-project);
 
   color: var(--theme-text);
+}
+
+/* ========================================
+   NOSTALGIA BANK
+========================================= */
+
+.projects-section--nostalgia {
+  background: var(--surface-nostalgia);
+}
+
+/* PREVIEW FRAME */
+
+.nostalgia-frame {
+  width: 100%;
+  max-width: 680px;
+  aspect-ratio: 3 / 2;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  background: #F6F1E8;
+
+  box-shadow: var(--theme-project-shadow);
+}
+
+/* HOLDING PAGE */
+
+.nostalgia-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px;
+
+  text-align: center;
+
+  color: #294B3B;
+}
+
+.nostalgia-placeholder__mark {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.nostalgia-placeholder__line {
+  width: 42px;
+  height: 1px;
+
+  margin: 20px 0 16px;
+
+  background: #B85F45;
+}
+
+.nostalgia-placeholder p {
+  margin: 0;
+
+  font-family: Garamond, Georgia, serif;
+  font-size: 17px;
+  color: #6D836D;
 }
 
 .projects-section--music {
