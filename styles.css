@@ -2346,10 +2346,9 @@ html[data-theme="dusk"]
 
   overflow: hidden;
 
-  background: #f1ece7;
+  background: #F2EBE6;
   color: #294b3b;
 }
-
 
 /* ========================================
    PROJECT LAYOUT
@@ -3531,16 +3530,6 @@ html[data-theme="dusk"]
 
 }
 
-
-/* ========================================
-   PROJECT — AVENTURA COFFEE
-========================================= */
-
-.projects-section--aventura {
-  background: #f0e1d7;
-}
-
-
 /* ========================================
    MIRRORED PROJECT LAYOUT
 ========================================= */
@@ -3614,6 +3603,14 @@ html[data-theme="dusk"]
   font-size: 1rem;
 }
 
+.projects-section__image--music {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+}
 
 /* ========================================
    RESERVED LINK
@@ -3623,31 +3620,6 @@ html[data-theme="dusk"]
   cursor: default;
 
   opacity: 0.65;
-}
-
-
-/* ========================================
-   AVENTURA VERTICAL TITLE
-========================================= */
-
-.projects-section--aventura
-.projects-section__spine {
-  grid-column: 3;
-}
-
-.projects-section--aventura
-.projects-section__title {
-  transform: rotate(-90deg);
-}
-
-.projects-section--aventura
-.projects-section__content {
-  grid-column: 2;
-}
-
-.projects-section--aventura
-.projects-section__preview {
-  grid-column: 1;
 }
 
 
@@ -3689,44 +3661,6 @@ html[data-theme="dusk"]
 }
 
 
-/* ========================================
-   INTRO
-========================================= */
-
-.languages-intro {
-  position: absolute;
-
-  top: 60px;
-  left: 68px;
-
-  max-width: 680px;
-}
-
-.languages-intro__title {
-  margin: 0;
-
-  font-family:
-    Helvetica,
-    Arial,
-    sans-serif;
-
-  font-size: 58px;
-
-  font-weight: 700;
-
-  line-height: 0.98;
-
-  letter-spacing: -3px;
-
-  color: var(--forest-dark);
-}
-
-.languages-intro__title span {
-  display: block;
-
-  color: var(--rust);
-}
-
 
 /* ========================================
    HORIZON
@@ -3735,7 +3669,7 @@ html[data-theme="dusk"]
 .language-horizon {
   position: absolute;
 
-  top: 270px;
+  top: 160px;
   left: 40px;
   right: 40px;
 
@@ -3872,21 +3806,21 @@ html[data-theme="dusk"]
       transparent 72%
     ),
 
-    linear-gradient(
-      90deg,
+   linear-gradient(
+  90deg,
 
-      rgba(173, 119, 151, 0.08) 0%,
+  rgba(173, 119, 151, 0.15) 0%,
 
-      rgba(215, 130, 139, 0.22) 18%,
+  rgba(215, 130, 139, 0.26) 18%,
 
-      rgba(240, 166, 142, 0.34) 38%,
+  rgba(240, 166, 142, 0.34) 38%,
 
-      rgba(255, 224, 181, 0.48) 52%,
+  rgba(255, 224, 181, 0.48) 52%,
 
-      rgba(240, 169, 143, 0.30) 70%,
+  rgba(240, 169, 143, 0.34) 70%,
 
-      rgba(181, 127, 151, 0.10) 100%
-    );
+  rgba(181, 127, 151, 0.17) 100%
+);
 
   border-radius: 999px;
 
@@ -4210,7 +4144,6 @@ html[data-theme="dusk"]
 
 /* ========================================
    LANGUAGES CONTACT
-   Match Résumé exactly
 ========================================= */
 
 .languages-signoff__link--contact {
@@ -4462,8 +4395,8 @@ html[data-theme="dusk"]
   --surface-header: #fbf8f5;
   --surface-home: #f4f0e7;
   --surface-about: #e8ede5;
-  --surface-project: #f1ece7;
-  --surface-aventura: #f0e1d7;
+  --surface-project: #F2EBE6;
+  --surface-music: #E8EDF0;
   --surface-languages: #f8f2e8;
 
   --theme-text: #294b3b;
@@ -4494,7 +4427,7 @@ html[data-theme="dusk"] {
   --surface-home: #1c2a25;
   --surface-about: #202d28;
   --surface-project: #1b2823;
-  --surface-aventura: #302720;
+  --surface-music: #202D35;
   --surface-languages: #18241f;
 
   --theme-text: #e6e2d7;
@@ -4844,6 +4777,10 @@ html[data-theme="dusk"]
   color: var(--theme-text);
 }
 
+.projects-section--music {
+  background: var(--surface-music);
+}
+
 .projects-section__title {
   color: var(--theme-text);
 }
@@ -4871,25 +4808,6 @@ html[data-theme="dusk"]
 
 .projects-section__preview-frame img {
   box-shadow: var(--theme-project-shadow);
-}
-
-
-/* ========================================
-   AVENTURA THEME
-========================================= */
-
-.projects-section--aventura {
-  background: var(--surface-aventura);
-}
-
-.aventura-placeholder {
-  background: var(--surface-home);
-
-  color: var(--theme-text);
-}
-
-.aventura-placeholder__line {
-  background: var(--theme-rust);
 }
 
 
@@ -5388,3 +5306,14 @@ html[data-theme="dusk"]
     0 18px 45px
     rgba(33, 63, 49, 0.08);
 }
+
+
+/* ========================================
+   THE MUSIC ATLAS
+========================================= */
+
+.music-atlas-dot {
+  color: #287fa0;
+}
+
+
