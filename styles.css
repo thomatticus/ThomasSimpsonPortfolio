@@ -1855,13 +1855,10 @@ html[data-theme="dusk"]
 ========================================= */
 
 .rainier-system__terrain {
-  opacity:
-    calc(
-      0.22
-      -
-      var(--rainier-progress)
-      * 0.04
-    );
+ opacity:
+  calc(
+    0.52 - var(--rainier-progress) * 0.08
+  );
 
   transform:
     translateX(
@@ -2007,13 +2004,13 @@ html[data-theme="dusk"]
 
   z-index: 4;
 
-  left: 63%;
+  left: 59%;
   top: 9%;
 
-  width: 260px;
+  width: 190px;
   height: 390px;
 
-  color: #A5654F;
+  color: #a5654f;
 
   font-family:
     "SFMono-Regular",
@@ -2046,24 +2043,24 @@ html[data-theme="dusk"]
     );
 
   -webkit-mask-image:
-    linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(0, 0, 0, 0.20) 12%,
-      rgba(0, 0, 0, 0.75) 33%,
-      #000 55%,
-      #000 100%
-    );
+  linear-gradient(
+  to right,
+  transparent 0%,
+  rgba(0, 0, 0, 0.65) 22%,
+  #000 42%,
+  #000 65%,
+  transparent 100%
+);
 
   mask-image:
-    linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(0, 0, 0, 0.20) 12%,
-      rgba(0, 0, 0, 0.75) 33%,
-      #000 55%,
-      #000 100%
-    );
+  linear-gradient(
+  to right,
+  transparent 0%,
+  rgba(0, 0, 0, 0.65) 22%,
+  #000 42%,
+  #000 65%,
+  transparent 100%
+);
 }
 
 
@@ -6390,7 +6387,7 @@ html[data-theme="dusk"]
   width: min(440px, 110vw);
   height: 170px;
 
-  opacity: 0.48;
+  opacity: 0.85;
 
   transform: translateX(-50%);
   pointer-events: none;
