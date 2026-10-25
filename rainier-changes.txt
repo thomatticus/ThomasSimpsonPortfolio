@@ -1,0 +1,91 @@
+diff --git a/styles.css b/styles.css
+index 51ea734..1856a65 100644
+--- a/styles.css
++++ b/styles.css
+@@ -1857,10 +1857,8 @@ html[data-theme="dusk"]
+ .rainier-system__terrain {
+   opacity:
+     calc(
+-      0.22
+-      -
+-      var(--rainier-progress)
+-      * 0.04
++      0.38 -
++      var(--rainier-progress) * 0.06
+     );
+ 
+   transform:
+@@ -1882,9 +1880,8 @@ html[data-theme="dusk"]
+ .rainier-system__contour {
+   fill: none;
+ 
+-  stroke: #6f8376;
+-
+-  stroke-width: 0.62;
++  stroke: #536d5d;
++  stroke-width: 0.85;
+ 
+   stroke-linecap: round;
+   stroke-linejoin: round;
+@@ -1894,19 +1891,15 @@ html[data-theme="dusk"]
+ }
+ 
+ .rainier-system__contour--index {
+-  stroke: #62796b;
+-
+-  stroke-width: 0.9;
+-
+-  opacity: 0.82;
++  stroke: #456454;
++  stroke-width: 1.1;
++  opacity: 0.9;
+ }
+ 
+ .rainier-system__contour--summit {
+-  stroke: #536c5e;
+-
+-  stroke-width: 0.82;
+-
+-  opacity: 0.88;
++  stroke: #385a49;
++  stroke-width: 1.05;
++  opacity: 0.95;
+ }
+ 
+ 
+@@ -2027,13 +2020,11 @@ html[data-theme="dusk"]
+ 
+   line-height: 1.35;
+ 
+-  opacity:
+-    calc(
+-      0.06
+-      +
+-      var(--rainier-progress)
+-      * 0.54
+-    );
++ opacity:
++  calc(
++    0.25 +
++    var(--rainier-progress) * 0.65
++  );
+ 
+   transform:
+     translateX(
+@@ -2266,6 +2257,7 @@ html[data-theme="dusk"]
+     left: 51%;
+ 
+     width: 560px;
++
+     height: 430px;
+   }
+ 
+@@ -6388,7 +6380,7 @@ html[data-theme="dusk"]
+   width: min(440px, 110vw);
+   height: 170px;
+ 
+-  opacity: 0.48;
++  opacity: 0.75;
+ 
+   transform: translateX(-50%);
+   pointer-events: none;

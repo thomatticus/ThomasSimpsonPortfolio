@@ -1882,7 +1882,7 @@ html[data-theme="dusk"]
 .rainier-system__contour {
   fill: none;
 
-  stroke: #6f8376;
+  stroke: #385A49;
 
   stroke-width: 0.62;
 
@@ -1894,7 +1894,7 @@ html[data-theme="dusk"]
 }
 
 .rainier-system__contour--index {
-  stroke: #62796b;
+  stroke: #294b3b;
 
   stroke-width: 0.9;
 
@@ -1902,7 +1902,7 @@ html[data-theme="dusk"]
 }
 
 .rainier-system__contour--summit {
-  stroke: #536c5e;
+  stroke: #476b58;
 
   stroke-width: 0.82;
 
@@ -2013,7 +2013,7 @@ html[data-theme="dusk"]
   width: 260px;
   height: 390px;
 
-  color: #536f60;
+  color: #A5654F;
 
   font-family:
     "SFMono-Regular",
@@ -6300,6 +6300,8 @@ html[data-theme="dusk"]
    ABOUT — MOBILE COMPOSITION
 ========================================= */
 
+@media (max-width: 700px) {
+
 .about-panel {
   height: 100%;
   min-height: 0;
@@ -6403,3 +6405,4 @@ html[data-theme="dusk"]
   font-size: 7px;
 }
 
+}
