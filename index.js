@@ -159,9 +159,6 @@ function getPanelInformation() {
 ========================================= */
 
 function updateNavigation() {
-  if (!isDesktop()) {
-    return;
-  }
 
   const panelData =
     getPanelInformation();
@@ -213,9 +210,6 @@ function updateNavigation() {
 ========================================= */
 
 function updateSunrise() {
-  if (!isDesktop()) {
-    return;
-  }
 
   const panelData =
     getPanelInformation();
@@ -399,14 +393,6 @@ viewport.addEventListener(
       return;
     }
 
-    /*
-      Trackpads may already provide
-      horizontal movement.
-
-      Use whichever direction contains
-      the stronger movement.
-    */
-
     const amount =
       Math.abs(event.deltaX) >
       Math.abs(event.deltaY)
@@ -454,15 +440,6 @@ function goToSection(
     );
 
   if (!section) {
-    return;
-  }
-
-  if (!isDesktop()) {
-    section.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
     return;
   }
 
@@ -562,17 +539,14 @@ window.addEventListener(
    RESIZE
 ========================================= */
 
+
 window.addEventListener(
   "resize",
   () => {
-    if (!isDesktop()) {
-      viewport.scrollLeft = 0;
-      return;
-    }
-
     updatePortfolio();
   }
 );
+
 
 
 /* ========================================
