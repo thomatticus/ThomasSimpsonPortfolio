@@ -5384,12 +5384,14 @@ html[data-theme="dusk"]
   color: #287fa0;
 }
 
-
 /* ========================================
    MOBILE HORIZONTAL EXPERIENCE
+   HEADER + HOME REFINEMENT
 ========================================= */
 
 @media (max-width: 700px) {
+
+  /* KEEP THE HORIZONTAL STRUCTURE */
 
   html,
   body {
@@ -5401,7 +5403,6 @@ html[data-theme="dusk"]
   .portfolio-scroll,
   .portfolio-sticky {
     width: 100%;
-    height: 100vh;
     height: 100dvh;
   }
 
@@ -5411,32 +5412,49 @@ html[data-theme="dusk"]
     overflow: hidden;
   }
 
+  /* HEADER */
+
   .site-header {
     flex: 0 0 auto;
   }
 
   .site-brand {
-    padding: 19px 12px 14px;
+    padding: 28px 16px 15px;
+  }
+
+  .site-brand__name {
+    font-size: clamp(13px, 3.8vw, 17px);
+    letter-spacing: 0.22em;
+  }
+
+  .site-brand__role {
+    margin-top: 9px;
+    font-size: 8px;
+    letter-spacing: 0.14em;
   }
 
   .mountain-scene {
-    height: clamp(70px, 12dvh, 110px);
+    height: 82px;
   }
 
   .site-nav {
-    min-height: 48px;
+    min-height: 46px;
+    padding: 0 4px;
   }
 
   .site-nav__link {
-    padding: 12px 4px 9px;
+    gap: 5px;
+    padding: 12px 3px 8px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
   }
 
-  /* HORIZONTAL SCROLLING */
+  /* HORIZONTAL PANELS */
 
   .panel-viewport {
     flex: 1 1 auto;
-    min-height: 0;
     width: 100%;
+    min-height: 0;
     height: auto;
 
     overflow-x: auto;
@@ -5455,13 +5473,10 @@ html[data-theme="dusk"]
     min-height: 100%;
   }
 
-  /* INDIVIDUAL PANELS */
-
   .portfolio-panel {
     flex: 0 0 100vw;
     width: 100vw;
     min-width: 0;
-
     height: 100%;
     min-height: 0;
 
@@ -5474,38 +5489,122 @@ html[data-theme="dusk"]
     scroll-snap-align: start;
   }
 
-  /* HOME */
+  /* HOME LAYOUT */
 
-  .terrain-home,
-  .projects-section {
+  .terrain-home {
     height: 100%;
     min-height: 0;
-
     overflow-x: hidden;
     overflow-y: auto;
   }
 
   .terrain-home__inner {
+    width: calc(100% - 44px);
     height: auto;
     min-height: 100%;
+
+    padding: 32px 0 42px;
   }
+
+  .terrain-home__statement {
+    position: relative;
+    left: auto;
+    top: auto;
+
+    width: 100%;
+    transform: none;
+  }
+
+  .terrain-home__title {
+    line-height: 0.98;
+  }
+
+  .terrain-home__title span {
+    font-size: clamp(32px, 9vw, 42px);
+    letter-spacing: -0.045em;
+    white-space: normal;
+  }
+
+  .terrain-home__title strong {
+    margin-top: 4px;
+    font-size: clamp(38px, 10.5vw, 48px);
+    letter-spacing: -0.05em;
+    white-space: normal;
+  }
+
+  .terrain-home__intro {
+    max-width: 34ch;
+    margin-top: 22px;
+
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .terrain-home__explore {
+    margin-top: 23px;
+  }
+
+  /* PORTRAIT */
 
   .terrain-home__portrait {
-    height: clamp(230px, 48dvh, 430px);
+    position: relative;
+
+    left: auto;
+    bottom: auto;
+
+    width: min(76%, 300px);
+    height: 290px;
+
+    margin: 28px auto 0;
+    transform: none;
   }
 
-  /* PROJECTS */
+  .terrain-home__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* EDITORIAL DETAILS */
+
+  .terrain-home__aside {
+    position: relative;
+
+    top: auto;
+    right: auto;
+
+    width: 100%;
+    margin-top: 20px;
+    transform: none;
+  }
+
+  .terrain-home__aside-accent {
+    font-size: 13px;
+  }
+
+  .terrain-home__aside-copy {
+    margin-top: 12px;
+  }
+
+  .terrain-home__location {
+    margin-top: 20px;
+  }
+
+  /* PRESERVE OTHER PANELS FOR NOW */
+
+  .about-panel,
+  .projects-section,
+  .languages-section {
+    height: 100%;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 
   .projects-section {
     padding-top: 44px;
     padding-bottom: 48px;
-  }
-
-  /* LANGUAGES */
-
-  .languages-section {
-    height: 100%;
-    min-height: 0;
   }
 
 }
