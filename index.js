@@ -1712,3 +1712,110 @@ function resetContactForm() {
 
 })();
 
+
+/* ========================================
+   MOBILE LANGUAGE HORIZON
+========================================= */
+
+const languageHorizon = document.querySelector(
+  ".language-horizon"
+);
+
+const languageSelection = document.querySelector(
+  ".language-selection"
+);
+
+if (languageHorizon && languageSelection) {
+
+  const languages = languageHorizon.querySelectorAll(
+    ".language"
+  );
+
+  const selectionName = languageSelection.querySelector(
+    ".language-selection__name"
+  );
+
+  const selectionDetail = languageSelection.querySelector(
+    ".language-selection__detail"
+  );
+
+  const horizonLine = languageHorizon.querySelector(
+    ".language-horizon__line"
+  );
+
+  const atmosphere = languageHorizon.querySelector(
+    ".language-horizon__atmosphere"
+  );
+
+  languages.forEach((language) => {
+
+    language.setAttribute("aria-pressed", "false");
+
+    language.addEventListener("click", () => {
+
+      const name = language.querySelector(
+        ".language__name"
+      );
+
+      const detail = language.querySelector(
+        ".language__detail"
+      );
+
+      if (!name || !detail) return;
+
+      /* Clear previous selection */
+
+      languages.forEach((item) => {
+        item.classList.remove("is-selected");
+        item.setAttribute("aria-pressed", "false");
+      });
+
+      /* Activate selected language */
+
+      language.classList.add("is-selected");
+      language.setAttribute("aria-pressed", "true");
+
+      /* Update description */
+
+      selectionName.textContent = name.textContent.trim();
+      selectionDetail.textContent = detail.textContent.trim();
+
+      /* Move light toward selected language */
+
+      const horizonBounds =
+        languageHorizon.getBoundingClientRect();
+
+      const languageBounds =
+        language.getBoundingClientRect();
+
+      const languageCenter =
+        languageBounds.left +
+        languageBounds.width / 2;
+
+      const percentage =
+        ((languageCenter - horizonBounds.left) /
+          horizonBounds.width) * 100;
+
+      const focusPosition =
+        `${Math.max(0, Math.min(100, percentage))}%`;
+
+      if (horizonLine) {
+        horizonLine.style.setProperty(
+          "--focus-x",
+          focusPosition
+        );
+      }
+
+      if (atmosphere) {
+        atmosphere.style.setProperty(
+          "--focus-x",
+          focusPosition
+        );
+      }
+
+    });
+
+  });
+
+}
+
