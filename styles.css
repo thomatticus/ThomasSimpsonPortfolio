@@ -5851,15 +5851,85 @@ html[data-theme="dusk"]
     object-position: center top;
   }
 
-  /* SECONDARY HOME DETAILS */
+ 
+/* ========================================
+   HOME — SOCIAL LINKS MOBILE
+========================================= */
 
-  .terrain-home__aside {
-    display: none;
-  }
+/* Show the aside as the final Home element */
 
-  .terrain-home__inner::before {
-    display: none;
-  }
+.terrain-home__aside {
+  position: relative;
+
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+
+  width: 100%;
+  height: auto;
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
+
+  transform: none;
+}
+
+/* Hide desktop-only editorial details */
+
+.terrain-home__aside-accent,
+.terrain-home__aside-copy,
+.terrain-home__location {
+  display: none;
+}
+
+/* Center the three social icons */
+
+.terrain-home__aside .home-socials {
+  position: static;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  gap: 22px;
+
+  transform: none;
+}
+
+/* Comfortable touch targets */
+
+.terrain-home__aside .home-socials__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  font-size: 17px;
+  text-decoration: none;
+}
+
+/* Keep the existing clean background */
+
+.terrain-home__inner::before {
+  display: none;
+}
+
 
   /* OTHER PANELS
      Preserve scrolling until redesigned */
@@ -5899,6 +5969,7 @@ html[data-theme="dusk"]
   .terrain-home__inner {
     padding-top: 14px;
     padding-bottom: 10px;
+    justify-content: space-between;
   }
 
   .terrain-home__title span {
