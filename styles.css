@@ -5608,3 +5608,178 @@ html[data-theme="dusk"]
   }
 
 }
+
+
+/* ========================================
+   MOBILE HOME — SINGLE SCREEN COMPOSITION
+========================================= */
+
+@media (max-width: 700px) {
+
+  /* RECLAIM VERTICAL SPACE */
+
+  .site-brand {
+    padding: 16px 12px 12px;
+  }
+
+  .mountain-scene {
+    height: 68px;
+  }
+
+  .site-nav {
+    min-height: 44px;
+  }
+
+  .site-nav__link {
+    padding: 10px 3px 7px;
+  }
+
+  /* HOME FILLS ITS PANEL */
+
+  .terrain-home {
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .terrain-home__inner {
+    display: flex;
+    flex-direction: column;
+
+    width: calc(100% - 44px);
+    height: 100%;
+    min-height: 0;
+
+    padding: 18px 0 0;
+    overflow: hidden;
+  }
+
+  /* TEXT COMPOSITION */
+
+  .terrain-home__statement {
+    position: relative;
+    left: auto;
+    top: auto;
+
+    flex: 0 0 auto;
+    width: 100%;
+
+    transform: none;
+  }
+
+  .terrain-home__title {
+    line-height: 0.98;
+  }
+
+  .terrain-home__title span {
+    font-size: clamp(29px, 8.5vw, 40px);
+    letter-spacing: -0.045em;
+    white-space: normal;
+  }
+
+  .terrain-home__title strong {
+    margin-top: 3px;
+    font-size: clamp(35px, 10vw, 47px);
+    letter-spacing: -0.05em;
+    white-space: normal;
+  }
+
+  .terrain-home__intro {
+    max-width: 38ch;
+    margin-top: 14px;
+
+    font-size: clamp(12px, 3.25vw, 14px);
+    line-height: 1.45;
+  }
+
+  .terrain-home__explore {
+    margin-top: 15px;
+    padding-bottom: 4px;
+    font-size: 9px;
+  }
+
+  /* PORTRAIT USES REMAINING SPACE */
+
+  .terrain-home__portrait {
+    position: relative;
+    left: auto;
+    bottom: auto;
+
+    flex: 1 1 0;
+    align-self: center;
+
+    width: min(76%, 280px);
+    height: auto;
+    min-height: 0;
+
+    margin: 14px auto 0;
+    overflow: hidden;
+
+    transform: none;
+  }
+
+  .terrain-home__image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  /* HIDE SECONDARY EDITORIAL DETAILS
+     ON THE SMALLEST LAYOUT */
+
+  .terrain-home__aside {
+    display: none;
+  }
+
+  /* REMOVE DECORATIVE SPACE */
+
+  .terrain-home__inner::before {
+    display: none;
+  }
+
+}
+
+/* SHORTER PHONE SCREENS */
+
+@media (max-width: 700px) and (max-height: 740px) {
+
+  .site-brand {
+    padding-top: 10px;
+    padding-bottom: 9px;
+  }
+
+  .mountain-scene {
+    height: 54px;
+  }
+
+  .terrain-home__inner {
+    padding-top: 12px;
+  }
+
+  .terrain-home__title span {
+    font-size: 29px;
+  }
+
+  .terrain-home__title strong {
+    font-size: 35px;
+  }
+
+  .terrain-home__intro {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .terrain-home__explore {
+    margin-top: 10px;
+  }
+
+  .terrain-home__portrait {
+    margin-top: 8px;
+  }
+
+}
+
