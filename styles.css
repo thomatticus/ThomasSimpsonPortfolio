@@ -6403,3 +6403,95 @@ html[data-theme="dusk"]
 }
 
 }
+
+
+/* ========================================
+   DAYLIGHT / DUSK — SVG ICONS
+========================================= */
+
+.theme-control {
+  gap: 8px;
+  align-items: center;
+}
+
+.theme-control__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: #6d836d;
+  opacity: 0.48;
+
+  transition:
+    color 300ms ease,
+    opacity 300ms ease;
+}
+
+.theme-control__icon {
+  display: block;
+
+  width: 19px;
+  height: 19px;
+
+  flex-shrink: 0;
+}
+
+.theme-control__option:hover {
+  opacity: 0.85;
+}
+
+.theme-control__option[aria-pressed="true"] {
+  color: #a5654f;
+  opacity: 1;
+}
+
+.theme-control__option:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* DUSK */
+
+html[data-theme="dusk"]
+.theme-control__option {
+  color: #a9b6ad;
+  opacity: 0.48;
+}
+
+html[data-theme="dusk"]
+.theme-control__option:hover {
+  opacity: 0.85;
+}
+
+html[data-theme="dusk"]
+.theme-control__option[aria-pressed="true"] {
+  color: #d7c5b0;
+  opacity: 1;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .theme-control {
+    gap: 4px;
+  }
+
+  .theme-control__option {
+    width: 34px;
+    height: 34px;
+  }
+
+  .theme-control__icon {
+    width: 18px;
+    height: 18px;
+  }
+}
