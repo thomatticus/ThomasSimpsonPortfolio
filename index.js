@@ -593,388 +593,59 @@ window.addEventListener(
   }
 
 
-  /* ======================================
-     RAINIER GEOGRAPHIC AREA
-  ====================================== */
+/* ======================================
+   LOAD LOCAL RAINIER CONTOURS
+====================================== */
 
-  const bounds = {
-    west: -121.865,
-    south: 46.775,
-    east: -121.655,
-    north: 46.955
-  };
+async function loadRainier() {
 
-  const viewBox = {
-    width: 760,
-    height: 560
-  };
+  try {
 
-
-  /* ======================================
-     USGS CONTOUR SERVICE
-  ====================================== */
-
-  const endpoint =
-    "https://cartowfs.nationalmap.gov/arcgis/rest/services/contours/FeatureServer/5/query";
-
-
-  /* ======================================
-     PROJECT LONGITUDE / LATITUDE
-     INTO SVG
-  ====================================== */
-
-  function projectPoint(
-    longitude,
-    latitude
-  ) {
-
-    const x =
-      (
-        (
-          longitude -
-          bounds.west
-        ) /
-        (
-          bounds.east -
-          bounds.west
-        )
-      ) *
-      viewBox.width;
-
-
-    const y =
-      viewBox.height -
-      (
-        (
-          latitude -
-          bounds.south
-        ) /
-        (
-          bounds.north -
-          bounds.south
-        )
-      ) *
-      viewBox.height;
-
-
-    return [x, y];
-  }
-
-
-  /* ======================================
-     COORDINATES → SVG PATH
-  ====================================== */
-
-  function coordinatesToPath(
-    coordinates
-  ) {
-
-    return coordinates
-      .map(
-        (
-          point,
-          index
-        ) => {
-
-          const [x, y] =
-            projectPoint(
-              point[0],
-              point[1]
-            );
-
-          const command =
-            index === 0
-              ? "M"
-              : "L";
-
-          return (
-            `${command} ` +
-            `${x.toFixed(2)} ` +
-            `${y.toFixed(2)}`
-          );
-        }
-      )
-      .join(" ");
-  }
-
-
-  /* ======================================
-     CONTROL VISUAL DENSITY
-  ====================================== */
-
-  function shouldDrawContour(
-    elevation,
-    fcode
-  ) {
-
-    /*
-      Keep official index contours.
-    */
-
-    if (fcode === 10102) {
-      return true;
-    }
-
-
-    /*
-      Draw 200-foot intervals.
-
-      Still real USGS geometry without
-      dumping every contour onto the page.
-    */
-
-    return (
-      Number.isFinite(elevation) &&
-      Math.abs(
-        elevation % 200
-      ) < 0.01
+    const response = await fetch(
+      "./assets/rainier-contours.svg"
     );
-  }
 
-
-  /* ======================================
-     CREATE CONTOUR PATH
-  ====================================== */
-
-  function createContour(
-    coordinates,
-    properties
-  ) {
-
-    const elevation =
-      Number(
-        properties.contourelevation ??
-        properties.CONTOURELEVATION ??
-        0
+    if (!response.ok) {
+      throw new Error(
+        `Rainier SVG failed to load: ${response.status}`
       );
-
-
-    const fcode =
-      Number(
-        properties.fcode ??
-        properties.FCODE ??
-        0
-      );
-
-
-    if (
-      !shouldDrawContour(
-        elevation,
-        fcode
-      )
-    ) {
-      return null;
     }
 
+    const svgText = await response.text();
 
-    const path =
-      document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "path"
-      );
+    const svgDocument = new DOMParser().parseFromString(
+      svgText,
+      "image/svg+xml"
+    );
 
+    if (svgDocument.querySelector("parsererror")) {
+      throw new Error("Invalid Rainier SVG.");
+    }
 
-    path.setAttribute(
-      "d",
-      coordinatesToPath(
-        coordinates
+    const savedTerrain = svgDocument.querySelector(
+      ".rainier-system__terrain"
+    );
+
+    if (!savedTerrain || !savedTerrain.querySelector("path")) {
+      throw new Error("No Rainier contours found.");
+    }
+
+    terrain.replaceChildren(
+      ...Array.from(savedTerrain.children, (child) =>
+        document.importNode(child, true)
       )
     );
 
+  } catch (error) {
 
-    path.classList.add(
-      "rainier-system__contour"
+    console.warn(
+      "Local Rainier contours could not load.",
+      error
     );
 
-
-    if (fcode === 10102) {
-
-      path.classList.add(
-        "rainier-system__contour--index"
-      );
-    }
-
-
-    if (elevation >= 11000) {
-
-      path.classList.add(
-        "rainier-system__contour--summit"
-      );
-    }
-
-
-    return path;
   }
 
-
-  /* ======================================
-     ADD CONTOUR
-  ====================================== */
-
-  function addContour(
-    coordinates,
-    properties
-  ) {
-
-    const path =
-      createContour(
-        coordinates,
-        properties
-      );
-
-
-    if (!path) {
-      return;
-    }
-
-
-    terrain.appendChild(path);
-  }
-
-
-  /* ======================================
-     RENDER USGS GEOJSON
-  ====================================== */
-
-  function renderContours(data) {
-
-    terrain.innerHTML = "";
-
-
-    if (
-      !Array.isArray(
-        data?.features
-      )
-    ) {
-      return;
-    }
-
-
-    data.features.forEach(
-      (feature) => {
-
-        const geometry =
-          feature.geometry;
-
-
-        if (!geometry) {
-          return;
-        }
-
-
-        const properties =
-          feature.properties || {};
-
-
-        if (
-          geometry.type ===
-          "LineString"
-        ) {
-
-          addContour(
-            geometry.coordinates,
-            properties
-          );
-        }
-
-
-        else if (
-          geometry.type ===
-          "MultiLineString"
-        ) {
-
-          geometry.coordinates.forEach(
-            (line) => {
-
-              addContour(
-                line,
-                properties
-              );
-            }
-          );
-        }
-      }
-    );
-  }
-
-
-  /* ======================================
-     LOAD ACTUAL RAINIER CONTOURS
-  ====================================== */
-
-  async function loadRainier() {
-
-    const params =
-      new URLSearchParams({
-
-        where:
-          "contourunits = 1 AND contourelevation >= 5000",
-
-        geometry: [
-          bounds.west,
-          bounds.south,
-          bounds.east,
-          bounds.north
-        ].join(","),
-
-        geometryType:
-          "esriGeometryEnvelope",
-
-        spatialRel:
-          "esriSpatialRelIntersects",
-
-        inSR:
-          "4326",
-
-        outSR:
-          "4326",
-
-        outFields:
-          "contourelevation,contourunits,fcode",
-
-        returnGeometry:
-          "true",
-
-        f:
-          "geojson",
-
-        resultRecordCount:
-          "2000"
-      });
-
-
-    try {
-
-      const response =
-        await fetch(
-          `${endpoint}?${params.toString()}`
-        );
-
-
-      if (!response.ok) {
-
-        throw new Error(
-          `USGS request failed: ${response.status}`
-        );
-      }
-
-
-      const data =
-        await response.json();
-
-
-      renderContours(data);
-    }
-
-
-    catch (error) {
-
-      console.warn(
-        "Mount Rainier contour data could not load.",
-        error
-      );
-    }
-  }
+}
 
 
   /* ======================================
